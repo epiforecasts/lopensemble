@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   lopensemble: lopensemble.html
-last_built: 2025-11-10T17:08Z
+last_built: 2025-11-25T10:33Z
 urls:
   reference: https://epiforecasts.io/lopensemble/reference
   article: https://epiforecasts.io/lopensemble/articles
