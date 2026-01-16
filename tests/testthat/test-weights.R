@@ -1,6 +1,10 @@
 library("data.table")
 
 test_that("Generating CRPS weights works", {
+  skip_if_not(
+    !is.null(cmdstanr::cmdstan_version(error_on_NA = FALSE)),
+    "CmdStan not available"
+  )
   splitdate <- as.Date("2020-03-28")
 
   traindata <- example_data[date <= splitdate]
