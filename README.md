@@ -6,7 +6,7 @@ lopensemble package
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/epiforecasts/lopensemble)
 [![R-CMD-check](https://github.com/epiforecasts/lopensemble/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/epiforecasts/lopensemble/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/github/epiforecasts/lopensemble/branch/main/graph/badge.svg?token=rYeyG3kFIa)](https://codecov.io/github/epiforecasts/lopensemble)
+[![codecov](https://codecov.io/github/epiforecasts/lopensemble/branch/main/graph/badge.svg?token=rYeyG3kFIa)](https://app.codecov.io/github/epiforecasts/lopensemble)
 ![GitHub
 contributors](https://img.shields.io/github/contributors/epiforecasts/lopensemble)
 [![License:
