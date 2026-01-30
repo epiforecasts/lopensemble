@@ -1,6 +1,14 @@
 # lopensemble (development version)
 
+## Infrastructure
+
+* Updated GitHub Actions dependencies
+
 # lopensemble 0.1.2
+
+## Package
+
+* Switched from rstan to cmdstanr for Stan model compilation (#41)
 
 # lopensemble 0.1.1
 
