@@ -6,14 +6,14 @@
 library(grid)
 
 ## --- palette ---------------------------------------------------------------
-col_bg_top <- "#0C1A2B"
-col_bg_bot <- "#1D3E63"
-col_border <- "#63A6D6"
-col_hist <- "#DCE6F0"
-col_member <- "#7FC0EA"
-col_ribbon <- "#63A6D6"
-col_pool <- "#F2A25C"
-col_text <- "#F7FAFD"
+col_bg_top <- "#FFFFFF"
+col_bg_bot <- "#E7F0F8"
+col_border <- "#3F86BE"
+col_hist <- "#12263A"
+col_member <- "#5AA0D2"
+col_ribbon <- "#8FBFE3"
+col_pool <- "#DE7B22"
+col_text <- "#12263A"
 
 ## --- hexagon ---------------------------------------------------------------
 hex_angle <- seq(30, 330, by = 60) * pi / 180
