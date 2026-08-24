@@ -1,6 +1,8 @@
 lopensemble package
 ================
 
+<img src="man/figures/logo.png" align="right" width="130" alt="lopensemble logo" />
+
 <!-- badges: start -->
 
 ![GitHub R package

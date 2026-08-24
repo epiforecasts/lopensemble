@@ -3,6 +3,8 @@ title: "lopensemble package"
 output: github_document
 ---
 
+<img src="man/figures/logo.png" align="right" width="130" alt="lopensemble logo" />
+
 <!-- badges: start -->
 ![GitHub R package version](https://img.shields.io/github/r-package/v/epiforecasts/lopensemble)
 [![R-CMD-check](https://github.com/epiforecasts/lopensemble/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/epiforecasts/lopensemble/actions/workflows/R-CMD-check.yaml)
