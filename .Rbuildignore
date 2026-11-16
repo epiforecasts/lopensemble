@@ -7,3 +7,5 @@
 ^src/.*\.dll
 ^src/.*\.o
 ^.github
+^cran-comments\.md$
+^data-raw$

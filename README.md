@@ -1,12 +1,14 @@
 lopensemble package
 ================
 
+<img src="man/figures/logo.png" align="right" width="130" alt="lopensemble logo" />
+
 <!-- badges: start -->
 
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/epiforecasts/lopensemble)
 [![R-CMD-check](https://github.com/epiforecasts/lopensemble/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/epiforecasts/lopensemble/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/github/epiforecasts/lopensemble/branch/main/graph/badge.svg?token=rYeyG3kFIa)](https://codecov.io/github/epiforecasts/lopensemble)
+[![codecov](https://codecov.io/github/epiforecasts/lopensemble/branch/main/graph/badge.svg?token=rYeyG3kFIa)](https://app.codecov.io/github/epiforecasts/lopensemble)
 ![GitHub
 contributors](https://img.shields.io/github/contributors/epiforecasts/lopensemble)
 [![License:
@@ -114,7 +116,9 @@ score_df[, mean(crps), by = model][, setnames(.SD, "V1", "CRPS")]
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
 <!-- prettier-ignore-start -->
+
 <!-- markdownlint-disable -->
 
 All contributions to this project are gratefully acknowledged using the
@@ -137,5 +141,7 @@ specification. Contributions of any kind are welcome!
 <a href="https://github.com/epiforecasts/lopensemble/issues?q=is%3Aissue+commenter%3Ajonathonmellor">jonathonmellor</a>
 
 <!-- markdownlint-enable -->
+
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

@@ -1,14 +1,15 @@
 # lopensemble (development version)
 
-## Package changes
+## Infrastructure
 
-* The package website now links to the GitHub repository and issue tracker.
+* Updated GitHub Actions dependencies
+* The package website now links to the GitHub repository and issue tracker
 
 # lopensemble 0.1.2
 
-## Package changes
+## Package
 
-* The package was changed to use `cmdstanr` instead of `rstan`. https://github.com/epiforecasts/lopensemble/pull/41
+* Switched from rstan to cmdstanr for Stan model compilation (#41)
 
 # lopensemble 0.1.1
 
