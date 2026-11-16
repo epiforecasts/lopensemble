@@ -3,6 +3,7 @@
 ## Infrastructure
 
 * Updated GitHub Actions dependencies
+* The package website now links to the GitHub repository and issue tracker
 
 # lopensemble 0.1.2
 
