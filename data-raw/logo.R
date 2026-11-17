@@ -1,19 +1,36 @@
 # Hex logo for lopensemble.
 #
 # Run with `Rscript data-raw/logo.R` to regenerate man/figures/logo.png and
-# man/figures/logo.svg. Needs only grid (base) and ragg.
+# man/figures/logo.svg, and logo-dark.png and logo-dark.svg next to them: the
+# same design in a dark palette for sites shown in dark mode. Needs only grid
+# (base) and ragg.
 
 library(grid)
 
-## --- palette ---------------------------------------------------------------
-col_bg_top <- "#FFFFFF"
-col_bg_bot <- "#E7F0F8"
-col_border <- "#3F86BE"
-col_hist <- "#12263A"
-col_member <- "#5AA0D2"
-col_ribbon <- "#8FBFE3"
-col_pool <- "#DE7B22"
-col_text <- "#12263A"
+## --- palettes --------------------------------------------------------------
+light <- list(
+  col_bg_top = "#FFFFFF",
+  col_bg_bot = "#E7F0F8",
+  col_border = "#3F86BE",
+  col_hist = "#12263A",
+  col_member = "#5AA0D2",
+  col_ribbon = "#8FBFE3",
+  col_pool = "#DE7B22",
+  col_text = "#12263A"
+)
+
+# The same roles on a dark ground: the series, members and pool are lightened
+# so they still read against it.
+dark <- list(
+  col_bg_top = "#1B2531",
+  col_bg_bot = "#131A21",
+  col_border = "#6AAEE0",
+  col_hist = "#DCE6EF",
+  col_member = "#7FBCE8",
+  col_ribbon = "#7FB4DE",
+  col_pool = "#F29A4A",
+  col_text = "#E8EDF2"
+)
 
 ## --- hexagon ---------------------------------------------------------------
 hex_angle <- seq(30, 330, by = 60) * pi / 180
@@ -62,7 +79,8 @@ dens <- rowSums(vapply(seq_along(drift), function(i) {
 dens <- dens / max(dens) * (1 - horizon) * 0.95
 
 ## --- drawing ---------------------------------------------------------------
-draw_logo <- function() {
+draw_logo <- function(palette) {
+  list2env(palette, environment())
   grid.newpage()
 
   hex <- polygonGrob(hex_x, hex_y)
@@ -130,13 +148,19 @@ w <- 1200
 h <- w * 2 / sqrt(3)
 dir.create("man/figures", showWarnings = FALSE, recursive = TRUE)
 
-ragg::agg_png("man/figures/logo.png", width = w, height = h, units = "px",
-              res = 300, background = "transparent")
-draw_logo()
-invisible(dev.off())
+for (theme in c("light", "dark")) {
+  stem <- if (theme == "light") "man/figures/logo" else "man/figures/logo-dark"
+  palette <- get(theme)
 
-svg("man/figures/logo.svg", width = w / 300, height = h / 300, bg = "transparent")
-draw_logo()
-invisible(dev.off())
+  ragg::agg_png(paste0(stem, ".png"), width = w, height = h, units = "px",
+                res = 300, background = "transparent")
+  draw_logo(palette)
+  invisible(dev.off())
 
-message("wrote man/figures/logo.png and man/figures/logo.svg")
+  svg(paste0(stem, ".svg"), width = w / 300, height = h / 300,
+      bg = "transparent")
+  draw_logo(palette)
+  invisible(dev.off())
+
+  message("wrote ", stem, ".png and ", stem, ".svg")
+}
