@@ -55,7 +55,8 @@ phase <- c(0.0, 1.3, 2.4, 0.7, 3.0)
 
 member <- function(x, i) {
   h <- (x - split) / (horizon - split)
-  history(split) + drift[i] * h^1.3 + wiggle[i] * sin(freq[i] * h + phase[i]) * h
+  history(split) + drift[i] * h^1.3 +
+    wiggle[i] * sin(freq[i] * h + phase[i]) * h
 }
 
 x_hist <- seq(0, split, length.out = 200)
@@ -80,7 +81,6 @@ dens <- dens / max(dens) * (1 - horizon) * 0.95
 
 ## --- drawing ---------------------------------------------------------------
 draw_logo <- function(palette) {
-  list2env(palette, environment())
   grid.newpage()
 
   hex <- polygonGrob(hex_x, hex_y)
@@ -88,7 +88,7 @@ draw_logo <- function(palette) {
     hex_x, hex_y,
     gp = gpar(
       fill = linearGradient(
-        c(col_bg_bot, col_bg_top),
+        c(palette$col_bg_bot, palette$col_bg_top),
         x1 = 0.1, y1 = 0, x2 = 0.9, y2 = 1
       ),
       col = NA
@@ -104,32 +104,34 @@ draw_logo <- function(palette) {
   # Spread of the members.
   grid.polygon(
     c(x_fc, rev(x_fc)), c(hi, rev(lo)),
-    gp = gpar(fill = adjustcolor(col_ribbon, alpha.f = 0.22), col = NA)
+    gp = gpar(fill = adjustcolor(palette$col_ribbon, alpha.f = 0.22), col = NA)
   )
 
   # Individual model predictions.
   for (m in members) {
-    grid.lines(x_fc, m, gp = gpar(col = adjustcolor(col_member, alpha.f = 0.8),
-                                  lwd = 3, lineend = "round"))
+    grid.lines(x_fc, m,
+               gp = gpar(col = adjustcolor(palette$col_member, alpha.f = 0.8),
+                         lwd = 3, lineend = "round"))
   }
 
   # Mixture density, standing on the forecast horizon.
   grid.lines(c(horizon, horizon), range(y_grid),
-             gp = gpar(col = adjustcolor(col_hist, alpha.f = 0.35), lwd = 3))
+             gp = gpar(col = adjustcolor(palette$col_hist, alpha.f = 0.35),
+                       lwd = 3))
   grid.lines(horizon + dens, y_grid,
-             gp = gpar(col = col_pool, lwd = 6, lineend = "round"))
+             gp = gpar(col = palette$col_pool, lwd = 6, lineend = "round"))
 
   # Observed series and the pooled prediction.
   grid.lines(x_hist, history(x_hist),
-             gp = gpar(col = col_hist, lwd = 6, lineend = "round"))
+             gp = gpar(col = palette$col_hist, lwd = 6, lineend = "round"))
   grid.lines(x_fc, pooled,
-             gp = gpar(col = col_pool, lwd = 7, lineend = "round"))
+             gp = gpar(col = palette$col_pool, lwd = 7, lineend = "round"))
 
   popViewport(1)
 
   # Wordmark, scaled to a fixed share of the hexagon width.
   fs <- 20
-  gp <- gpar(col = col_text, fontfamily = "Inter", fontface = "bold",
+  gp <- gpar(col = palette$col_text, fontfamily = "Inter", fontface = "bold",
              fontsize = fs)
   w_txt <- convertWidth(grobWidth(textGrob("lopensemble", gp = gp)), "npc",
                         valueOnly = TRUE)
@@ -140,7 +142,7 @@ draw_logo <- function(palette) {
 
   # Border last so it sits on top of everything.
   grid.polygon(hex_x, hex_y,
-               gp = gpar(fill = NA, col = col_border, lwd = 14))
+               gp = gpar(fill = NA, col = palette$col_border, lwd = 14))
 }
 
 ## --- output ----------------------------------------------------------------
